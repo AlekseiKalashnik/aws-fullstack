@@ -1,0 +1,24 @@
+<app-sidenav></app-sidenav>
+<div class="item-list">
+  <button (click)="openUploadFileModal()" class="upload-file">Upload file</button>
+  <ul class="file_list">
+    <li *ngFor="let amazonFile of user.files;let i = index;">
+      <span>{{(i+1)+'. '}}{{amazonFile.name}}</span>
+      <button class="download-btn" (click)="downloadFile(amazonFile)">Download</button>
+    </li>
+  </ul>
+</div>
+<div id="popup" class="popup">
+  <div class="popup-content">
+    <span class="close" id="closePopup">&times;</span>
+    <form (submit)="uploadFile()" enctype="multipart/form-data">
+      <label for="images" class="drop-container" id="dropcontainer">
+      <span class="drop-title">Drop files here</span>
+      or
+      <input type="file" id="images" accept="image/*" required (change)="onFileInputChange($event)">
+    </label>
+     <button class="upload-file">Upload file</button>
+    </form>
+  </div>
+</div>
+
